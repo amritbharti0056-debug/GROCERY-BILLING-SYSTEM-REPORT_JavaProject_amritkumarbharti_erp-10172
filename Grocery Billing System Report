@@ -1,28 +1,19 @@
 import java.util.Scanner;
-
 public class GroceryBillingSystem {
-
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
-
         String itemName;
         int quantity;
         double price, total;
-
         // Input
         System.out.print("Enter item name: ");
         itemName = sc.nextLine();
-
         System.out.print("Enter quantity: ");
         quantity = sc.nextInt();
-
         System.out.print("Enter price per item: ");
         price = sc.nextDouble();
-
         // Calculation
         total = quantity * price;
-
         // Output
         System.out.println("\n----- BILL -----");
         System.out.println("Item: " + itemName);
