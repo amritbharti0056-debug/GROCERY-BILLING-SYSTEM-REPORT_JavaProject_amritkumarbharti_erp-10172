@@ -1,25 +1,72 @@
 import java.util.Scanner;
+
+class Product {
+    int id;
+    String name;
+    double price;
+
+    Product(int id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+}
+
 public class GroceryBillingSystem {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String itemName;
+        Product p1 = new Product(1, "Rice", 50);
+        Product p2 = new Product(2, "Sugar", 40);
+        Product p3 = new Product(3, "Milk", 30);
+        Product p4 = new Product(4, "Oil", 120);
+        double total = 0;
+        int choice;
         int quantity;
-        double price, total;
-        // Input
-        System.out.print("Enter item name: ");
-        itemName = sc.nextLine();
-        System.out.print("Enter quantity: ");
-        quantity = sc.nextInt();
-        System.out.print("Enter price per item: ");
-        price = sc.nextDouble();
-        // Calculation
-        total = quantity * price;
-        // Output
-        System.out.println("\n----- BILL -----");
-        System.out.println("Item: " + itemName);
-        System.out.println("Quantity: " + quantity);
-        System.out.println("Price: " + price);
-        System.out.println("Total: " + total);
+        System.out.println("===== GROCERY BILLING SYSTEM =====");
+        do {
+            System.out.println("\n1. Rice  - ₹50");
+            System.out.println("2. Sugar - ₹40");
+            System.out.println("3. Milk  - ₹30");
+            System.out.println("4. Oil   - ₹120");
+            System.out.println("0. Exit");
+            System.out.print("\nEnter Product Choice: ");
+            choice = sc.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter Quantity: ");
+                    quantity = sc.nextInt();
+                    total = total + (p1.price * quantity);
+                    break;
+                case 2:
+                    System.out.print("Enter Quantity: ");
+                    quantity = sc.nextInt();
+                    total = total + (p2.price * quantity);
+                    break;
+                case 3:
+                    System.out.print("Enter Quantity: ");
+                    quantity = sc.nextInt();
+                    total = total + (p3.price * quantity);
+                    break;
+                case 4:
+                    System.out.print("Enter Quantity: ");
+                    quantity = sc.nextInt();
+                    total = total + (p4.price * quantity);
+                    break;
+                case 0:
+                    System.out.println("\nGenerating Bill...");
+                    break;
+                default:
+                    System.out.println("Invalid Choice");
+            }
+        } while (choice != 0);
+        double tax = total * 0.05;
+        double finalAmount = total + tax;
+        System.out.println("\n===== FINAL BILL =====");
+        System.out.println("Total Amount : ₹" + total);
+        System.out.println("Tax (5%)     : ₹" + tax);
+        System.out.println("Final Amount : ₹" + finalAmount);
+
+        System.out.println("\nThank You For Shopping!");
 
         sc.close();
     }
